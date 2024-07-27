@@ -1,1 +1,24 @@
+# archivo: test_biblioteca.py
 
+import unittest
+from biblioteca import Libro, Usuario, Biblioteca
+
+class TestBiblioteca(unittest.TestCase):
+    def setUp(self):
+        self.biblioteca = Biblioteca()
+        self.libro = Libro("Test Book", "Test Author", "TEST123")
+        self.usuario = Usuario("Test User", "TEST001")
+        self.biblioteca.agregar_libro(self.libro)
+        self.biblioteca.registrar_usuario(self.usuario)
+
+    def test_prestar_libro(self):
+        self.assertTrue(self.biblioteca.prestar_libro("TEST123", "TEST001"))
+        self.assertFalse(self.libro.disponible)
+
+    def test_devolver_libro(self):
+        self.biblioteca.prestar_libro("TEST123", "TEST001")
+        self.assertTrue(self.biblioteca.devolver_libro("TEST123", "TEST001"))
+        self.assertTrue(self.libro.disponible)
+
+if __name__ == '__main__':
+    unittest.main()
