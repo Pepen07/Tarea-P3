@@ -1,1 +1,16 @@
+# Modificar el método prestar_libro en la clase Biblioteca
 
+def prestar_libro(self, isbn, id_usuario):
+    libro = next((l for l in self.libros if l.isbn == isbn), None)
+    usuario = next((u for u in self.usuarios if u.id_usuario == id_usuario), None)
+    if libro and usuario and libro.disponible:
+        libro.disponible = False
+        usuario.libros_prestados.append(libro)
+        return True
+    elif not libro:
+        print("Error: Libro no encontrado.")
+    elif not usuario:
+        print("Error: Usuario no encontrado.")
+    elif not libro.disponible:
+        print("Error: Libro no disponible.")
+    return False
