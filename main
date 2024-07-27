@@ -1,1 +1,41 @@
+# archivo: biblioteca.py
 
+class Libro:
+    def __init__(self, titulo, autor, isbn):
+        self.titulo = titulo
+        self.autor = autor
+        self.isbn = isbn
+        self.disponible = True
+
+    def __str__(self):
+        return f"{self.titulo} por {self.autor} ({self.isbn})"
+
+class Usuario:
+    def __init__(self, nombre, id_usuario):
+        self.nombre = nombre
+        self.id_usuario = id_usuario
+        self.libros_prestados = []
+
+    def __str__(self):
+        return f"{self.nombre} (ID: {self.id_usuario})"
+
+class Biblioteca:
+    def __init__(self):
+        self.libros = []
+        self.usuarios = []
+
+    def agregar_libro(self, libro):
+        self.libros.append(libro)
+
+    def registrar_usuario(self, usuario):
+        self.usuarios.append(usuario)
+
+def main():
+    biblioteca = Biblioteca()
+    # Código básico para agregar libros y usuarios
+    biblioteca.agregar_libro(Libro("El Quijote", "Miguel de Cervantes", "123456"))
+    biblioteca.registrar_usuario(Usuario("Juan Pérez", "001"))
+    print("Biblioteca inicializada con datos básicos.")
+
+if __name__ == "__main__":
+    main()
