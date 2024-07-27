@@ -1,1 +1,15 @@
+# Añadir a la clase Biblioteca en biblioteca.py
 
+def buscar_libros(self, termino):
+    return [libro for libro in self.libros if 
+            termino.lower() in libro.titulo.lower() or 
+            termino.lower() in libro.autor.lower()]
+
+# Modificar la función main para incluir una demostración de búsqueda
+def main():
+    # ... (código anterior)
+    # Demostración de búsqueda
+    resultados = biblioteca.buscar_libros("Quijote")
+    print("Resultados de búsqueda:")
+    for libro in resultados:
+        print(libro)
